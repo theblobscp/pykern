@@ -76,8 +76,9 @@ def pykern():
                 cmdmod.run(importantFunctions, importantVars)
             except Exception as error:
                 print(Fore.LIGHTRED_EX + "ERROR EXECUTING COMMAND: " + error + Style.RESET_ALL)
-        except:
-            print(Fore.LIGHTRED_EX + "Failed to find command \"" + cmd + "\"" + Style.RESET_ALL)
+        except Exception as error:
+            print(Fore.LIGHTRED_EX + "Failed to find command \"" + cmd + "\"" + Style.RESET_ALL + ":")
+            print(error)
 
 def boot():
     global osdir
