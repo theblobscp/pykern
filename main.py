@@ -15,29 +15,33 @@ packagecount = 0
 
 curdir = ""
 
+su = False
+
 def datafolder():
     return 'C:\\Users\\*\\' if os.name=="nt" else os.path.expanduser("~")
 
 output = ""
 Fore.LIGHTBLUE_EX
-THISISLIGHTGREENN = Fore.LIGHTYELLOW_EX
+THISISLIGHTYELLOW = Fore.LIGHTYELLOW_EX # to make the icon readable
 osicon = [
-    Fore.LIGHTBLUE_EX + " ################## " + Style.RESET_ALL,
-    Fore.LIGHTBLUE_EX + "#                  #" + Style.RESET_ALL,
-    THISISLIGHTGREENN + "#  ######          #" + Style.RESET_ALL,
-    THISISLIGHTGREENN + "#  #    #          #" + Style.RESET_ALL,
-    Fore.LIGHTBLUE_EX + "#  ######          #" + Style.RESET_ALL,
-    Fore.LIGHTBLUE_EX + "#  #        #   #  #" + Style.RESET_ALL,
-    THISISLIGHTGREENN + "#  #         # #   #" + Style.RESET_ALL,
-    THISISLIGHTGREENN + "#  #          #    #" + Style.RESET_ALL,
-    Fore.LIGHTBLUE_EX + "#  #         #     #" + Style.RESET_ALL,
-    Fore.LIGHTBLUE_EX + "#                  #" + Style.RESET_ALL,
-    THISISLIGHTGREENN + " ################## " + Style.RESET_ALL
+    Fore.LIGHTBLUE_EX + " ================== " + Style.RESET_ALL,
+    Fore.LIGHTBLUE_EX + "|                  |" + Style.RESET_ALL,
+    THISISLIGHTYELLOW + "|  ######          |" + Style.RESET_ALL,
+    THISISLIGHTYELLOW + "|  #    #          |" + Style.RESET_ALL,
+    Fore.LIGHTBLUE_EX + "|  ######          |" + Style.RESET_ALL,
+    Fore.LIGHTBLUE_EX + "|  #        #   #  |" + Style.RESET_ALL,
+    THISISLIGHTYELLOW + "|  #         # #   |" + Style.RESET_ALL,
+    THISISLIGHTYELLOW + "|  #          #    |" + Style.RESET_ALL,
+    Fore.LIGHTBLUE_EX + "|  #         #     |" + Style.RESET_ALL,
+    Fore.LIGHTBLUE_EX + "|                  |" + Style.RESET_ALL,
+    THISISLIGHTYELLOW + " ================== " + Style.RESET_ALL
 ]
 
 def setPath(new):
     global curdir
     curdir = new
+
+displayusername = username
 
 def pykern():
     global osdir
@@ -46,12 +50,17 @@ def pykern():
     global curdir
     global output
     global osicon
+    global su
+    global displayusername
     curdir = osdir
+    displayusername = username
     print(Fore.BLUE + "PyKern v0.0.1" + Style.RESET_ALL)
     while (True):
+        if su == True:
+            displayusername = "root"
         if curdir.find(osdir) == -1:
             curdir = osdir
-        cmd = input(Fore.GREEN + curdir + Style.RESET_ALL + ": " + Fore.RED + username + Style.RESET_ALL + " >> ")
+        cmd = input(Fore.GREEN + curdir + Style.RESET_ALL + ": " + Fore.RED + displayusername + Style.RESET_ALL + " >> ")
         try:
             ## first setup
             args = []
